@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+import sys
+from os import path
+
+if not path.isfile('config.py'):
+    print('You need to create a configuration file first. '\
+        + 'View the README for more information.')
+    sys.exit(1)
 
 import config
 from api import API
