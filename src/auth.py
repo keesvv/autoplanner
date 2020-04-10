@@ -30,7 +30,7 @@ class AuthProvider:
         try:
             # Wait for Magister to redirect to homepage
             wait.until(lambda driver: driver.current_url.startswith(
-                'https://' + config.SCHOOL_URL + '/magister'
+                'https://' + self.school_url + '/magister'
             ))
         except TimeoutException:
             print('Authentication timed out. Try increasing '
