@@ -1,4 +1,5 @@
 __pycache__
+*.bak
 .session
 roster.csv
 config.py
