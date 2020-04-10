@@ -18,13 +18,14 @@ prov = AuthProvider(config.SCHOOL_URL)
 # Authenticate the user
 prov.authenticate()
 
+# Initialize the API
 api = API(prov)
+api.initialize()
 
 # Store the roster inside of a variable
 roster = api.get_roster()
 
-exporter = Exporter(roster)
-
 # Export the roster to a CSV format
+exporter = Exporter(roster)
 exporter.export_csv()
 
