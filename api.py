@@ -16,5 +16,5 @@ class API:
 
     def get_roster(self):
         appointments = self.request('/api/personen/11698/afspraken')
-        return appointments.json()
+        return appointments.json()['Items']
 
