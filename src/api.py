@@ -7,7 +7,7 @@ class API:
         self.session.headers['Authorization'] = f'Bearer {auth_provider.access_token}'
 
     @property
-    def person_prefix(self):
+    def __person_prefix(self):
         return f"/personen/{self.user['Id']}"
 
     def __request(self, url):
@@ -21,5 +21,5 @@ class API:
         self.user = self.__request('/account')['Persoon']
 
     def get_roster(self):
-        return self.__request(f'{self.person_prefix}/afspraken')['Items']
+        return self.__request(f'{self.__person_prefix}/afspraken')['Items']
 
