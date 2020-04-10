@@ -22,4 +22,5 @@ class AuthProvider:
         session = json.loads(raw_session)
 
         self.access_token = session['access_token']
+        driver.quit()
 
