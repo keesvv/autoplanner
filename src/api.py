@@ -6,14 +6,14 @@ class API:
         self.session = requests.Session()
         self.session.headers['Authorization'] = f'Bearer {auth_provider.access_token}'
 
-    def request(self, url):
+    def __request(self, url):
         result = self.session.get(
-                'https://' + self.auth_provider.school_url + url
+            f'https://{self.auth_provider.school_url}/api{url}'
         )
         
         return result
 
     def get_roster(self):
-        appointments = self.request('/api/personen/11698/afspraken')
+        appointments = self.__request('/personen/11698/afspraken')
         return appointments.json()['Items']
 
