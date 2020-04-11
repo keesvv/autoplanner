@@ -1,4 +1,5 @@
 import requests
+from errors import TokenExpiredError, RequestError
 
 class API:
     def __init__(self, auth_provider):
@@ -14,6 +15,14 @@ class API:
         result = self.session.get(
             f'https://{self.auth_provider.school_url}/api{url}'
         )
+
+        # User needs to re-login
+        if result.status_code == 401:
+            raise TokenExpiredError
+
+        # A non-200 code was returned
+        if result.status_code != 200:
+            raise RequestError
         
         return result.json()
 
