@@ -2,6 +2,7 @@ import config
 import json
 import sys
 import pickle
+import os
 from os import path
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -44,6 +45,12 @@ class AuthProvider:
         item = f'oidc.user:https://accounts.magister.net:M6-{self.school_url}'
         result = self.driver.execute_script(f"return window.sessionStorage.getItem('{item}')")
         self.session = json.loads(result)
+
+    """
+    Remove the session file
+    """
+    def remove_session(self):
+        os.remove('.session')
 
     """
     Authenticate the user
